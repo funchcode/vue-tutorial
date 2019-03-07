@@ -12,6 +12,15 @@
                 Add
             </button>
         </div>
+        <div id="app2">
+            <button v-on:click="greet">btn</button>
+        </div>
+        <div id="example">
+            <my-component></my-component>
+        </div>
+        <div>
+            <child message="Hi!"></child>
+        </div>
         <script>
             var data = {test : 0};
             var vm = new Vue({
@@ -25,6 +34,35 @@
                 console.log('new' + newVal);
                 console.log('old' + oldV);
             });
+            
+            var app2 = new Vue({
+                el: '#app2',
+                data: {
+                    name: 'Vue-js'
+                },
+                methods: {
+                    greet: function(event) {
+                        alert("hello");
+                        if (event === "off") {
+                            alert("Bye");
+                        }
+                    }
+                }
+            })
+        </script>
+        <script>
+            Vue.component('my-component', {
+                template: '<div> 꺄 </div>'
+            })
+            new Vue({
+                el: '#example'
+            })
+        </script>
+        <script>
+            Vue.component('child',{
+                props : ['message'],
+                template: '<span>{{message}}</span>'
+            })
         </script>
     </body>
 </html>
