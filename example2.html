@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Example of Vue</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Vue - Watch</h1>
+            <h5>Count : {{test}}</h5>
+            <button v-on:click="test += 1">
+                Add
+            </button>
+        </div>
+        <script>
+            var data = {test : 0};
+            var vm = new Vue({
+                el: '#app',
+                data: data,
+                created: function() {
+                    console.log('test is : ' + this.test)
+                }
+            });
+            vm.$watch('test', function(newVal, oldV) {
+                console.log('new' + newVal);
+                console.log('old' + oldV);
+            });
+        </script>
+    </body>
+</html>
